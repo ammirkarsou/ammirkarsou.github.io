@@ -1,0 +1,42 @@
+title: Ammir Karsou
+description: Geophysics • RTM/FWI • GPU
+# Replace with your production URL (no trailing slash)
+url: https://ammirkarsou.github.io
+# If you use a project site (not user/organization site), set a baseurl like "/mysite"
+baseurl: ""
+
+theme: minima
+
+# Navigation links shown in the header (Minima)
+header_pages:
+  - index.md
+  - projects/index.md
+  - blog/index.html
+  - publications.md
+  - about.md
+
+# Plugins supported on GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Permalink style (nice URLs for posts)
+permalink: /blog/:year/:month/:day/:title/
+
+# Author info (optional; Minima can use this)
+author:
+  name: Ammir Karsou
+  email: ammirkarsou@id.uff.br
+
+# Social media (optional; Minima can show icons if configured)
+# social_links:
+#   github: YOUR-USERNAME
+#   linkedin: your-linkedin-handle
+#   twitter: your-twitter-handle
+
+# Exclude local-only files from production site
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

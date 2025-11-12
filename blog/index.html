@@ -1,0 +1,26 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+---
+<h1>Blog</h1>
+
+<ul class="post-list">
+  {%- for post in site.posts limit: 12 -%}
+    <li class="post-item">
+      <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="post-date">— {{ post.date | date: "%b %-d, %Y" }}</span>
+      {%- if post.tags %}
+        <span class="post-tags"> • {{ post.tags | join: ", " }}</span>
+      {%- endif %}
+      <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+    </li>
+  {%- endfor -%}
+</ul>
+
+{%- assign total_posts = site.posts | size -%}
+{%- if total_posts > 12 -%}
+<p><a href="{{ "/blog/archive/" | relative_url }}">More posts → Archive</a></p>
+{%- endif -%}
+
+<p><a href="{{ "/feed.xml" | relative_url }}">RSS</a></p>
