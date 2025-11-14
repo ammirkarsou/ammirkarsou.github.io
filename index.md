@@ -3,7 +3,7 @@ layout: home
 title: Home
 ---
 
-# Hi, I'm **Your Name** 👋
+# Hi, I'm Ammir 👋
 
 I work on RTM/FWI, GPU-accelerated seismic modeling, and open seismic software. This site collects my projects, notes, and publications.
 
