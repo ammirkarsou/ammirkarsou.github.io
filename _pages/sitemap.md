@@ -7,31 +7,86 @@ author_profile: true
 
 {% include base_path %}
 
-A list of all the posts and pages found on the site. For you robots out there, there is an [XML version]({{ base_path }}/sitemap.xml) available for digesting as well.
+<style>
+.sitemap-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+.sitemap-list li {
+  margin-bottom: 0.35rem;
+}
+.sitemap-meta {
+  font-size: 0.85em;
+  color: var(--global-text-color-light);
+  margin-left: 0.35rem;
+}
+</style>
 
-<h2>Pages</h2>
-{% for post in site.pages %}
-  {% include archive-single.html %}
-{% endfor %}
+<p>This human-friendly sitemap highlights every major section of the site. If you prefer machine-readable lists, grab the <a href="{{ base_path }}/sitemap.xml">XML sitemap</a>.</p>
 
-<h2>Posts</h2>
-{% for post in site.posts %}
-  {% include archive-single.html %}
-{% endfor %}
+{% assign nav_items = site.data.navigation.main %}
 
-{% capture written_label %}'None'{% endcapture %}
+<h2>Main navigation</h2>
+<ul class="sitemap-list">
+  {% for item in nav_items %}
+    {% if item.url %}
+    <li><a href="{{ item.url | prepend: base_path }}">{{ item.title }}</a></li>
+    {% endif %}
+  {% endfor %}
+</ul>
 
-{% for collection in site.collections %}
-{% unless collection.output == false or collection.label == "posts" %}
-  {% capture label %}{{ collection.label }}{% endcapture %}
-  {% if label != written_label %}
-  <h2>{{ label }}</h2>
-  {% capture written_label %}{{ label }}{% endcapture %}
+{% assign publications = site.publications | sort: "date" | reverse %}
+<h2>Publications</h2>
+{% if publications and publications.size > 0 %}
+<ul class="sitemap-list">
+  {% for post in publications %}
+    <li><a href="{{ post.url | prepend: base_path }}">{{ post.title }}</a> <span class="sitemap-meta">{{ post.date | date: "%b %Y" }}</span></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No publications published yet.</p>
+{% endif %}
+
+{% assign posts = site.posts | sort: "date" | reverse %}
+<h2>Blog posts</h2>
+{% if posts and posts.size > 0 %}
+<ul class="sitemap-list">
+  {% for post in posts %}
+    <li><a href="{{ post.url | prepend: base_path }}">{{ post.title }}</a> <span class="sitemap-meta">{{ post.date | date: "%b %Y" }}</span></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Long-form articles are under construction—check back soon.</p>
+{% endif %}
+
+{% assign portfolio_items = site.portfolio | sort: "date" | reverse %}
+<h2>Portfolio</h2>
+{% if portfolio_items and portfolio_items.size > 0 %}
+<ul class="sitemap-list">
+  {% for item in portfolio_items %}
+    <li><a href="{{ item.url | prepend: base_path }}">{{ item.title }}</a> <span class="sitemap-meta">{{ item.date | date: "%b %Y" }}</span></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>The portfolio showcase is being curated and will be published soon.</p>
+{% endif %}
+
+{% assign nav_urls = "" %}
+{% for item in nav_items %}
+  {% if item.url %}
+    {% assign nav_urls = nav_urls | append: item.url | append: "|" %}
   {% endif %}
-{% endunless %}
-{% for post in collection.docs %}
-  {% unless collection.output == false or collection.label == "posts" %}
-  {% include archive-single.html %}
-  {% endunless %}
 {% endfor %}
+
+{% assign extra_pages = site.pages | sort: "title" %}
+<h2>Additional pages</h2>
+<ul class="sitemap-list">
+{% for page in extra_pages %}
+  {% if page.title and page.url and page.url != "/" and page.url != "/feed.xml" and page.sitemap_exclude != true %}
+    {% unless nav_urls contains page.url %}
+      <li><a href="{{ page.url | prepend: base_path }}">{{ page.title }}</a></li>
+    {% endunless %}
+  {% endif %}
 {% endfor %}
+</ul>
