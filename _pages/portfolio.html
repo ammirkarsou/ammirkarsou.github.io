@@ -7,8 +7,12 @@ author_profile: true
 
 {% include base_path %}
 
+<div class="notice--info">
+  <p><strong>Under construction:</strong> I’m curating current seismic imaging and processing projects for this space. Check back soon for detailed breakdowns, visuals, and takeaways.</p>
+</div>
 
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
-
+{% if site.portfolio and site.portfolio.size > 0 %}
+  {% for post in site.portfolio %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}

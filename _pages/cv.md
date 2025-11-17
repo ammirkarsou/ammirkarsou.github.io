@@ -11,35 +11,28 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* Ph.D. in Earth and Ocean Dynamics, Fluminense Federal University (UFF), 2023 – present  
+  * Thesis (in progress): Pseudospectral anisotropic RTM/FWI.
+* M.Sc. in Earth and Ocean Dynamics, Fluminense Federal University (UFF), 2018 – 2020  
+  * Thesis: GPU acceleration with OpenACC for modeling/FWI.
+* B.Sc. in Geophysics, Fluminense Federal University (UFF), 2012 – 2017  
+  * Thesis: Viscoacoustic & AVO data modeling using the Zoeppritz equation and its approximations.
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
-
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Jan 2021 – present: Researcher, Seismic Inversion and Imaging Group (GISIS) — Rio de Janeiro, Brazil
+  * Developing 2D/3D seismic modeling and FWI/RTM software; contributed to a UFF patent filing (2024).
+  * Implemented inverse scattering imaging conditions (ISIC) that improved stacked images and interpretation confidence.
+  * Built angle-domain common image gathers (ADCIGs) to QC velocity models and analyze azimuthal/angle-dependent reflectivity.
+  * Added amplitude compensation that yields true-amplitude RTM images and ADCIGs, enabling noise-attenuated reflectivity when combined with ISIC.
+  * Generated illumination maps from acquisition geometry to disambiguate refraction versus reflection energy and guide data selection for FWI.
+  * Applied advanced processing (noise, ghost, bubble, signature removal) to novel circular OBN datasets prepared for FWI.
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Programming: C/C++, Python, CUDA, Git.
+* Imaging & HPC: Full waveform inversion, reverse time migration, high-performance computing, parallel programming.
+* Processing & Interpretation: Seismic processing, velocity model building, angle gathers/QC, wave propagation.
 
 Publications
 ======
@@ -47,18 +40,3 @@ Publications
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
