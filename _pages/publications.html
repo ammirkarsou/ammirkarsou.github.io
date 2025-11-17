@@ -11,9 +11,23 @@ author_profile: true
 
 {% include base_path %}
 
+{% assign thesis_label = site.publication_category.thesis.title | default: "Thesis" %}
+{% assign theses = site.publications | where: "category", "thesis" %}
+<h2>{{ thesis_label }}</h2><hr />
+{% if theses and theses.size > 0 %}
+  {% for post in theses reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% else %}
+  <p>Thesis entries coming soon.</p>
+{% endif %}
+
 <!-- New style rendering if publication categories are defined -->
 {% if site.publication_category %}
   {% for category in site.publication_category  %}
+    {% if category[0] == "thesis" %}
+      {% continue %}
+    {% endif %}
     {% assign title_shown = false %}
     {% for post in site.publications reversed %}
       {% if post.category != category[0] %}
@@ -31,6 +45,5 @@ author_profile: true
     {% include archive-single.html %}
   {% endfor %}
 {% endif %}
-
 
 
